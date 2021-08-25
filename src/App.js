@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import FacebookLogin from "react-facebook-login";
 
-function App() {
+const App = () => {
+  const responseFacebook = (response) => {
+    console.log("login result", response);
+  };
+  const componentClicked = (data) => {
+    console.warn(data);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Login with Facebook</h1>
+      <FacebookLogin
+        appId="528654824923266"
+        autoLoad={true}
+        fields="name,email,picture"
+        onClick={componentClicked}
+        callback={responseFacebook}
+      />
     </div>
   );
-}
+};
 
 export default App;
